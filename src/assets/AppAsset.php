@@ -22,6 +22,8 @@ class AppAsset extends AssetBundle
     public $sourcePath = '@app/assets/web';
 
     public $js = [
+        'js/waypoint.js',
+        'js/jquery.counterup.js',
         'js/app.js',
     ];
 
@@ -29,6 +31,11 @@ class AppAsset extends AssetBundle
         // Note: less files require a compiler (available by default on Phundament Docker images)
         // use .css alternatively
         #'less/app.less',
+        'css/style.css',
+        "https://fonts.googleapis.com/css?family=PT+Sans:400,400i,700,700i&amp;subset=cyrillic-ext",
+        "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css",
+        "https://fonts.googleapis.com/css?family=Cormorant+Infant:300,300i,400,400i,700,700i",
+        "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
     ];
 
     public $depends = [

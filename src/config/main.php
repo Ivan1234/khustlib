@@ -114,6 +114,9 @@ $common = [
                 '/site/index' => '/site/index',
             ],
         ],
+        'quotes' => [
+            'class' => 'app\modules\quotes\Quotes',
+        ],
         'prototype' => [
             'class' => 'dmstr\modules\prototype\Module',
             'layout' => '@admin-views/layouts/box',

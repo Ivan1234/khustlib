@@ -36,6 +36,7 @@ use Yii;
 // prepare menu items, get all modules
 $adminMenuItems = [];
 $developerMenuItems = [];
+$favouriteMenuItems = [];
 
 foreach (\dmstr\helpers\Metadata::getModules() as $name => $module) {
     $role = $name;
@@ -47,8 +48,22 @@ foreach (\dmstr\helpers\Metadata::getModules() as $name => $module) {
         'visible' => Yii::$app->user->can($role) || (Yii::$app->user->identity && Yii::$app->user->identity->isAdmin),
         'items' => [],
     ];
-
-    $developerMenuItems[] = $defaultItem;
+    $moduleConfigItem = (is_object($module)) ?
+        (isset($module->params['menuItems']) ? $module->params['menuItems'] : []) :
+        (isset($module['params']['menuItems']) ? $module['params']['menuItems'] : []);
+    switch (true) {
+        case !empty($moduleConfigItem):
+            $moduleConfigItem = array_merge($defaultItem, $moduleConfigItem);
+            $moduleConfigItem['visible'] = \dmstr\helpers\RouteAccess::can($moduleConfigItem['url']);
+            $favouriteMenuItems[] = $moduleConfigItem;
+            continue 2;
+            break;
+        default:
+            $defaultItem['icon'] = 'fa fa-circle-o';
+            $developerMenuItems[] = $defaultItem;
+            break;
+    }
+    //$developerMenuItems[] = $defaultItem;
 }
 
 // create developer menu, when user is admin
@@ -63,7 +78,7 @@ if (Yii::$app->user->identity && Yii::$app->user->identity->isAdmin) {
     ];
 }
 
-echo \dmstr\widgets\Menu::widget(
+/*echo \dmstr\widgets\Menu::widget(
     [
         'options' => ['class' => 'sidebar-menu'],
         'items' => \yii\helpers\ArrayHelper::merge(
@@ -71,6 +86,13 @@ echo \dmstr\widgets\Menu::widget(
             \dmstr\modules\pages\models\Tree::getMenuItems('backend', true),
             $adminMenuItems
         ),
+    ]
+);*/
+
+echo \dmstr\widgets\Menu::widget(
+    [
+        'options' => ['class' => 'sidebar-menu'],
+        'items' => \yii\helpers\ArrayHelper::merge($favouriteMenuItems, $adminMenuItems),
     ]
 );
 ?>

@@ -116,6 +116,26 @@ $common = [
         ],
         'quotes' => [
             'class' => 'app\modules\quotes\Quotes',
+            'layout' => '@admin-views/layouts/box',
+            'params' => [
+                'menuItems'=>
+                [
+                    ['label'=>'Home', 'url'=>['site/index'],'options'=>['class'=>'list-group-item']],
+                    'icon' => 'fa fa-quote-left',
+                    'label' => 'Quotes',
+                    'options' => ['class' => 'treeview'],
+                    'visible' => true,
+                    'items' => [
+                        [
+                            'icon' => 'fa fa-circle-o',
+                            'label' => 'Edit Pages',
+                            'url' => [\yii\helpers\Url::to('/quotes/backend')],
+                            'visible' => true,
+                            'items' => [],
+                        ]
+                    ]
+                ]
+            ],
         ],
         'prototype' => [
             'class' => 'dmstr\modules\prototype\Module',

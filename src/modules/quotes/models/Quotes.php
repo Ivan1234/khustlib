@@ -29,9 +29,10 @@ class Quotes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['title'], 'required'],
+            [['title','content'], 'required'],
             [['content'], 'string'],
             [['modified', 'created'], 'safe'],
+            //[['visible', 'created', 'modified'], 'integer'],
             [['title'], 'string', 'max' => 255],
         ];
     }
@@ -43,10 +44,28 @@ class Quotes extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
-            'content' => 'Content',
-            'modified' => 'Modified',
-            'created' => 'Created',
+            'title' => 'Автор',
+            'content' => 'Контент',
+            'visible' => 'Видиме',
+            'modified' => 'Змінено',
+            'created' => 'Створено',
         ];
+    }
+
+    public function beforeValidate()
+    {
+        if (parent::beforeValidate()) {
+            if (!$this->created) {
+                $this->created = time();
+            }
+
+            $this->modified=time();
+
+            if($this->visible==null) 
+                $this->visible = 1;
+
+            return true;
+        }
+        return false;
     }
 }

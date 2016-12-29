@@ -8,15 +8,18 @@ $this->title .= 'Home';
     <?= \dmstr\modules\prototype\widgets\HtmlWidget::widget(['enableFlash' => true]) ?>
 
 </div> -->
+
 <section class="content bg">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12 intro">
 				<h1 class="text-center">Хустська центральна міська бібліотека</h1>
-				<blockquote>
-					«Библиотека – это и место работы, и храм мысли, и научно – исследовательский центр, и лаборатория, и музей, и место высоких радостей ума и глаз»
-					<i>(Н. Рерих)</i>
-				</blockquote>
+				<?php foreach ($quotes as $quote) { ?>
+					<blockquote>
+						«<?php echo nl2br($quote['content']); ?>»
+						<i><?php echo $quote['title']; ?></i>
+					</blockquote>
+				<?php } ?>
 			</div>
 		</div>
 	</div>

@@ -6,6 +6,7 @@ use app\components\Helper;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
+use app\modules\quotes\models\Quotes;
 
 /**
  * Site controller.
@@ -63,7 +64,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         Helper::checkApplication();
-
-        return $this->render('index');
+        $quotes = Quotes::find()->all();
+        return $this->render('index', array('quotes' => $quotes, ));
     }
 }

@@ -7,13 +7,15 @@ class m161221_075417_quotes extends Migration
 {
     public function up()
     {
-        $this->createTable('quotes', [
+        $this->createTable('quotes', array(
             'id' => Schema::TYPE_PK,
             'title' => Schema::TYPE_STRING . ' NOT NULL',
             'content' => Schema::TYPE_TEXT,
             'modified' => Schema::TYPE_TIMESTAMP . ' NOT NULL',
             'created' => Schema::TYPE_TIMESTAMP . ' NOT NULL',
-        ]);
+            ),
+            'ENGINE=InnoDB DEFAULT CHARACTER SET=utf8 COLLATE=utf8_unicode_ci'
+        );
     }
 
     public function down()

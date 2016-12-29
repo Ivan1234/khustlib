@@ -28,9 +28,33 @@ $this->params['breadcrumbs'][] = $this->title;
             'title',
             'content:ntext',
             'modified',
-            'created',
+            [
+                'attribute' => 'visible',                
+                'value'=>function($data){
+                   return $data->visible;
+                },
+                'contentOptions'=>['style'=>'width: 100px; text-align: center;'],
+                'content' => function($data){
+                    if($data->visible==0) $check = false;
+                    else $check = true;
+                    return Html::checkbox(
+                        'visible_check'.$data->id,
+                        $check,
+                        [
+                            'class' => 'do-change-value',
+                            'data-url'=>\yii\helpers\Url::to(['/quotes/backend/update','id'=>$data->id]),
+                            'data-id'=>$data->id,
+                            'data-attrname'=>'visible',
+                        ]
+                    );
+                },
+                'filter'=>["0"=>Yii::t('admin', 'Не видимі'), "1"=>Yii::t('admin', 'Видимі')],
+            ],
+            /*'created',*/
 
-            ['class' => 'yii\grid\ActionColumn'],
+            [
+                'class' => 'yii\grid\ActionColumn'
+            ],
         ],
     ]); ?>
 </div>

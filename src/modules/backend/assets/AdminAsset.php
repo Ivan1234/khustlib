@@ -22,9 +22,13 @@ class AdminAsset extends AssetBundle
     public $sourcePath = '@app/modules/backend/assets/web';
 
     public $css = [
-        'less/site.less',
+        'less/site.css',
+        'js/datepicker/bootstrap-datetimepicker.min.css',
     ];
     public $js = [
+        'js/datepicker/moment.min.js',
+        'js/datepicker/bootstrap-datetimepicker.min.js',
+        /*'js/backend.js',*/
     ];
     public $depends = [
         'yii\web\YiiAsset',

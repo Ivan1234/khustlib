@@ -32,7 +32,7 @@ class Quotes extends \yii\db\ActiveRecord
             [['title','content'], 'required'],
             [['content'], 'string'],
             [['modified', 'created'], 'safe'],
-            //[['visible', 'created', 'modified'], 'integer'],
+            [['visible', 'created', 'modified'], 'integer'],
             [['title'], 'string', 'max' => 255],
         ];
     }
@@ -47,8 +47,21 @@ class Quotes extends \yii\db\ActiveRecord
             'title' => 'Автор',
             'content' => 'Контент',
             'visible' => 'Видиме',
-            'modified' => 'Змінено',
-            'created' => 'Створено',
+            /*'modified' => 'Змінено',
+            'created' => 'Створено',*/
+        ];
+    }
+    public function behaviors()
+    {
+        return [
+            ///'sitemap' => [
+                //'class' => SitemapBehavior::className(),
+                /*'scope' => function ($model) {
+                    $model->select(['alias', 'modified']);
+                    $model->andWhere(['visible' => 1]);
+                    $model->andWhere(['<=', 'published', date('Y-m-d H:i')]);
+                }*/
+            //]
         ];
     }
 
@@ -59,7 +72,7 @@ class Quotes extends \yii\db\ActiveRecord
                 $this->created = time();
             }
 
-            $this->modified=time();
+            ///$this->modified=time();
 
             if($this->visible==null) 
                 $this->visible = 1;

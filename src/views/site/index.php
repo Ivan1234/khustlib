@@ -14,12 +14,14 @@ $this->title .= 'Home';
 		<div class="row">
 			<div class="col-xs-12 intro">
 				<h1 class="text-center">Хустська центральна міська бібліотека</h1>
-				<?php foreach ($quotes as $quote) { ?>
-					<blockquote>
-						«<?php echo nl2br($quote['content']); ?>»
-						<i><?php echo $quote['title']; ?></i>
-					</blockquote>
-				<?php } ?>
+				<div class="owl-carousel quotes">
+					<?php foreach ($quotes as $quote) { ?>
+						<blockquote>
+							«<?php echo nl2br($quote['content']); ?>»
+							<i><?php echo $quote['title']; ?></i>
+						</blockquote>
+					<?php } ?>
+				</div>
 			</div>
 		</div>
 	</div>

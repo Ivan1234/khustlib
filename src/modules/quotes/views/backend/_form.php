@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\web\JsExpression;
 
 /* @var $this yii\web\View */
 /* @var $model app\modules\quotes\models\Quotes */
@@ -16,9 +17,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
 
-    <?= $form->field($model, 'modified')->textInput() ?>
+    <?php // $form->field($model, 'modified')->textInput(['class'=>'published form-control']) ?>
 
-    <?= $form->field($model, 'created')->textInput() ?>
+    <?= $form->field($model, 'created')->textInput(['class'=>'published form-control']) ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
@@ -27,3 +28,13 @@ use yii\widgets\ActiveForm;
     <?php ActiveForm::end(); ?>
 
 </div>
+<?php
+$script = <<< JS
+   jQuery(function () {
+    $('.published').datetimepicker({
+         format: 'YYYY-MM-DD HH:mm',
+    });
+  });
+JS;
+$this->registerJs($script, yii\web\View::POS_READY);
+?>

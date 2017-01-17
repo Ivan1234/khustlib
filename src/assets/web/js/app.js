@@ -9,6 +9,14 @@ $(document).ready(function () {
         delay: 10,
         time: 2000
     });
+    if ($(".quotes blockquote").length > 1) {
+		$(".quotes").owlCarousel({
+			items: 1,
+			loop: true,
+			autoplay: true
+		});
+	}
+
 	window.onscroll = function () {
 		if (window.scrollY > 200) {
 			$('#go_top').addClass('visible');

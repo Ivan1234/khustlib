@@ -11,8 +11,8 @@ class m161221_075417_quotes extends Migration
             'id' => Schema::TYPE_PK,
             'title' => Schema::TYPE_STRING . ' NOT NULL',
             'content' => Schema::TYPE_TEXT,
-            'modified' => Schema::TYPE_TIMESTAMP . ' NOT NULL',
-            'created' => Schema::TYPE_TIMESTAMP . ' NOT NULL',
+            'modified' => Schema::TYPE_INT . ' NOT NULL',
+            'created' => Schema::TYPE_INT . ' NOT NULL',
             ),
             'ENGINE=InnoDB DEFAULT CHARACTER SET=utf8 COLLATE=utf8_unicode_ci'
         );

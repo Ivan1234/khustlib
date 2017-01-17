@@ -60,8 +60,8 @@ class QuotesSearch extends Quotes
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'modified' => $this->modified,
-            'created' => $this->created,
+            /*'modified' => $this->modified,
+            'created' => $this->created,*/
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

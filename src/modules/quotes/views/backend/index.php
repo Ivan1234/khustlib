@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'title',
             'content:ntext',
-            'modified',
+            //'modified',
             [
                 'attribute' => 'visible',                
                 'value'=>function($data){

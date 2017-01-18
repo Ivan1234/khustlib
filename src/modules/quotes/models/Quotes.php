@@ -10,8 +10,9 @@ use Yii;
  * @property integer $id
  * @property string $title
  * @property string $content
- * @property string $modified
- * @property string $created
+ * @property integer $modified
+ * @property integer $created
+ * @property integer $visible
  */
 class Quotes extends \yii\db\ActiveRecord
 {
@@ -32,7 +33,7 @@ class Quotes extends \yii\db\ActiveRecord
             [['title','content'], 'required'],
             [['content'], 'string'],
             [['modified', 'created'], 'safe'],
-            [['visible', 'created', 'modified'], 'integer'],
+            //[['visible', 'created', 'modified'], 'integer'],
             [['title'], 'string', 'max' => 255],
         ];
     }
@@ -47,10 +48,11 @@ class Quotes extends \yii\db\ActiveRecord
             'title' => 'Автор',
             'content' => 'Контент',
             'visible' => 'Видиме',
-            /*'modified' => 'Змінено',
-            'created' => 'Створено',*/
+            'modified' => 'Змінено',
+            'created' => 'Створено',
         ];
     }
+
     public function behaviors()
     {
         return [
@@ -70,9 +72,14 @@ class Quotes extends \yii\db\ActiveRecord
         if (parent::beforeValidate()) {
             if (!$this->created) {
                 $this->created = time();
+            } else {
+                $this->created = strtotime($this->created);
+                //echo date('Y-m-d H:i', strtotime($time));
             }
 
-            ///$this->modified=time();
+            $this->modified=time();
+            //print_r($this);
+            //print_r($this->content);
 
             if($this->visible==null) 
                 $this->visible = 1;

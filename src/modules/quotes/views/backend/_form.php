@@ -19,7 +19,9 @@ use yii\web\JsExpression;
 
     <?php // $form->field($model, 'modified')->textInput(['class'=>'published form-control']) ?>
 
-    <?= $form->field($model, 'created')->textInput(['class'=>'published form-control']) ?>
+    <?php $form->field($model, 'created')->textInput(['class'=>'published form-control']) ?>
+
+    <?= $form->field($model, 'visible')->checkbox(); ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

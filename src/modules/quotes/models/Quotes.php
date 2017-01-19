@@ -33,7 +33,7 @@ class Quotes extends \yii\db\ActiveRecord
             [['title','content'], 'required'],
             [['content'], 'string'],
             [['modified', 'created'], 'safe'],
-            //[['visible', 'created', 'modified'], 'integer'],
+            [['visible', 'created', 'modified'], 'integer'],
             [['title'], 'string', 'max' => 255],
         ];
     }
@@ -72,10 +72,10 @@ class Quotes extends \yii\db\ActiveRecord
         if (parent::beforeValidate()) {
             if (!$this->created) {
                 $this->created = time();
-            } else {
+            } /*else {
                 $this->created = strtotime($this->created);
                 //echo date('Y-m-d H:i', strtotime($time));
-            }
+            }*/
 
             $this->modified=time();
             //print_r($this);

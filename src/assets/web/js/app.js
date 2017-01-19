@@ -13,7 +13,7 @@ $(document).ready(function () {
 		$(".quotes").owlCarousel({
 			items: 1,
 			loop: true,
-			autoplay: true
+			dots: true
 		});
 	}
 

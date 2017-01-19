@@ -33,6 +33,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'content:ntext',
             'modified',
             'created',
+            'visible',
         ],
     ]) ?>
 

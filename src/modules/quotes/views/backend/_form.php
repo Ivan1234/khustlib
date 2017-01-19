@@ -15,11 +15,7 @@ use yii\web\JsExpression;
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'content')->textarea(['rows' => 6]) ?>
-
-    <?php // $form->field($model, 'modified')->textInput(['class'=>'published form-control']) ?>
-
-    <?php $form->field($model, 'created')->textInput(['class'=>'published form-control']) ?>
+    <?= $form->field($model, 'content')->textarea(['rows' => 6]); ?>
 
     <?= $form->field($model, 'visible')->checkbox(); ?>
 

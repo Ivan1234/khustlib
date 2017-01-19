@@ -64,7 +64,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         Helper::checkApplication();
-        $quotes = Quotes::find()->all();
+        $quotes = Quotes::find()->where(['visible'=> 1])->all();
         return $this->render('index', array('quotes' => $quotes, ));
     }
 }

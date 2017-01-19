@@ -28,7 +28,7 @@ class AdminAsset extends AssetBundle
     public $js = [
         'js/datepicker/moment.min.js',
         'js/datepicker/bootstrap-datetimepicker.min.js',
-        /*'js/backend.js',*/
+        'js/backend.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

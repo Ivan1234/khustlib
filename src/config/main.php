@@ -114,6 +114,30 @@ $common = [
                 '/site/index' => '/site/index',
             ],
         ],
+        'news' => [
+            'class' => 'app\modules\news\News',
+            'layout' => '@admin-views/layouts/box',
+            'params' => [
+                'menuItems'=>
+                [
+                    ['label'=>'Home', 'url'=>['site/index'],'options'=>['class'=>'list-group-item']],
+                    'icon' => 'fa fa-newspaper-o',
+                    'label' => 'News',
+                    'url' => [\yii\helpers\Url::to('/news/backend')],
+                    //'options' => ['class' => 'treeview'],
+                    'visible' => true,
+                    'items' => [
+                        /*[
+                            'icon' => 'fa fa-circle-o',
+                            'label' => 'All Quotes',
+                            'url' => [\yii\helpers\Url::to('/quotes/backend')],
+                            'visible' => true,
+                            'items' => [],
+                        ]*/
+                    ]
+                ]
+            ],
+        ],
         'quotes' => [
             'class' => 'app\modules\quotes\Quotes',
             'layout' => '@admin-views/layouts/box',

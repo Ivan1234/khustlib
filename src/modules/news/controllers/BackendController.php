@@ -10,7 +10,7 @@ use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * NewsController implements the CRUD actions for News model.
+ * BackendController implements the CRUD actions for News model.
  */
 class BackendController extends Controller
 {

@@ -81,6 +81,7 @@ $common = [
             'baseUrl' => '/',
             'rules' => [
                 'docs/<file:[a-zA-Z0-9_\-\./]+>' => 'docs',
+                'news/backend' => 'news/backend/index',
                 #'docs' => 'docs/default/index',
             ],
             'languages' => explode(',', getenv('APP_LANGUAGES')),
@@ -123,7 +124,7 @@ $common = [
                     ['label'=>'Home', 'url'=>['site/index'],'options'=>['class'=>'list-group-item']],
                     'icon' => 'fa fa-newspaper-o',
                     'label' => 'News',
-                    'url' => [\yii\helpers\Url::to('/news/backend')],
+                    'url' => [\yii\helpers\Url::to('/news/backend/index')],
                     //'options' => ['class' => 'treeview'],
                     'visible' => true,
                     'items' => [
